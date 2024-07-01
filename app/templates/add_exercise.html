@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Add Exercise</h1>
+<form action="{{ url_for('main.add_exercise') }}" method="post">
+    <input type="text" name="name" placeholder="New Exercise" required>
+    <button type="submit">Add Exercise</button>
+</form>
+{% endblock %}

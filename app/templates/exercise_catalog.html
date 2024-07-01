@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Exercise Catalog</h1>
+<ul>
+    {% for exercise in exercises %}
+    <li>
+        {{ exercise.name }}
+        <form action="{{ url_for('main.delete_exercise', exercise_id=exercise.id) }}" method="post"
+            style="display:inline;">
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+
+<form action="{{ url_for('main.exercise_catalog') }}" method="post">
+    <input type="text" name="name" placeholder="New Exercise" required>
+    <button type="submit">Add Exercise</button>
+</form>
+<nav>
+    <a href="{{ url_for('main.index') }}">back</a>
+</nav>
+{% endblock %}

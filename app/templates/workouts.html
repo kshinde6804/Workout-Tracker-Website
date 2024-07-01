@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Workouts</h1>
+<ul>
+    {% for workout in workouts %}
+    <li>
+        <strong>Date:</strong> {{ workout.date }}<br>
+        <ul>
+            {% for log in workout.logs %}
+            <li>
+                <strong>Exercise:</strong> {{ log.exercise.name }},
+                <strong>Sets:</strong> {{ log.sets }},
+                <strong>Reps:</strong> {{ log.reps }},
+                <strong>Weight:</strong> {{ log.weight }}
+            </li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

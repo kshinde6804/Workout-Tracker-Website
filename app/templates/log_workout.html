@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Log Workout</h1>
+<form action="{{ url_for('main.log_workout') }}" method="post">
+    <label for="date">Date:</label>
+    <input type="date" name="date" required><br><br>
+    <div id="exercise-fields">
+        <div>
+            <label for="exercise">Exercise:</label>
+            <select name="exercise" required>
+                {% for exercise in exercises %}
+                <option value="{{ exercise.id }}">{{ exercise.name }}</option>
+                {% endfor %}
+            </select>
+            <label for="sets">Sets:</label>
+            <input type="number" name="sets" required>
+            <label for="reps">Reps:</label>
+            <input type="number" name="reps" required>
+            <label for="weight">Weight:</label>
+            <input type="number" name="weight" required>
+        </div>
+    </div>
+    <button type="button" onclick="addExerciseField()">Add Exercise</button><br><br>
+    <button type="submit">Log Workout</button>
+</form>
+
+<script>
+    function addExerciseField() {
+        const container = document.getElementById('exercise-fields');
+        const div = document.createElement('div');
+        div.innerHTML = `
+                <label for="exercise">Exercise:</label>
+                <select name="exercise" required>
+                    {% for exercise in exercises %}
+                        <option value="{{ exercise.id }}">{{ exercise.name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="sets">Sets:</label>
+                <input type="number" name="sets" required>
+                <label for="reps">Reps:</label>
+                <input type="number" name="reps" required>
+                <label for="weight">Weight:</label>
+                <input type="number" name="weight" required>
+            `;
+        container.appendChild(div);
+    }
+</script>
+{% endblock %}

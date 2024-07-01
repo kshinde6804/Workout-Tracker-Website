@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Exercises</h1>
+<ul>
+    {% for exercise in exercises %}
+    <li>{{ exercise.name }}</li>
+    {% endfor %}
+</ul>
+
+
+<a href="{{ url_for('main.exercise_catalog')  }}">Exercise Catalog</a>
+<a href="{{ url_for('main.log_workout') }}">Log Workout</a>
+<a href="{{ url_for('main.workouts')  }}">Past Workouts</a>
+{% endblock %}
